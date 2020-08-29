@@ -141,3 +141,4 @@ os.path.join(PROJECT_ROOT, 'staticfiles'),
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+django_heroku.settings(locals())
