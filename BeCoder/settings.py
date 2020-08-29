@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'c@d#h+(y#2gnvxmoa5vt3u)1%9&egd=q68v))#5$fm13@g3nt@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -78,11 +78,13 @@ WSGI_APPLICATION = 'BeCoder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+SECRET_KEY = config('c@d#h+(y#2gnvxmoa5vt3u)1%9&egd=q68v))#5$fm13@g3nt@')
+DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default=config('postgres://lieistdbsjgfse:17c561571b70380d5b5c56778d51610d7ea0382cbf95a3acae3bbe6cdbaa1894@ec2-3-214-4-151.compute-1.amazonaws.com:5432/d8nnri5tvrjigo')
+    )
+    )
 }
 
 
